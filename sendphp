@@ -1,0 +1,34 @@
+<?php
+require($_SERVER['DOCUMENT_ROOT']."/lib/line/notify.php");
+// Token สำหรับใช้ส่ง line notify 
+$token = "xxx";
+// login line notify at https://notify-api.line.me
+// get token from https://notify-bot.line.me/my/
+ 
+$message = "สวัสดีนักเรียน WebDev\nทุกคนสบายดีไหม?\n";
+$message .= "ฉันอยู่ที่นี่นะ https://notify-api.line.me?id={$id}";
+ 
+$image = [
+   'imageThumbnail'=>"https://rlv.zcache.com/mr_happy_giant_smiley_face_square_sticker-rbb3ca9c6eafc4b1daf95629c45cfaa7d_v9wf3_8byvr_324.jpg",
+ 
+   'imageFullsize'=>"https://rlv.zcache.com/mr_happy_giant_smiley_face_square_sticker-rbb3ca9c6eafc4b1daf95629c45cfaa7d_v9wf3_8byvr_324.jpg"
+];
+ 
+$sticker = [
+   'stickerId'=>"140",
+   'stickerPackageId'=>"2"
+];
+ 
+// ส่ง line notify
+$res = notify_message($token, $message, $image, $sticker);
+/*
+ตัวอย่างแบบอื่นๆ
+for($i=1;$i<=3;$i++){
+   $res = notify_message($token_me, $message.$i, $image, $sticker);
+}
+*/
+//$res = notify_message($token_me, $message, null, null);
+//$res = notify_message($token_me, $message, null, $sticker);
+ 
+var_dump($res);
+?>
